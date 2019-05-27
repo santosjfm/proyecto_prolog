@@ -77,20 +77,20 @@ fallas('sin resultados! si los problemas persisten utilice un dispositivo
 
 % preguntas para resolver las fallas con su respectivo identificador de
 % falla
-lento:- formateo,
+aceite:- cambio_aceite,
 	pregunta('tienes problemas de motor?'),
 	pregunta('su automovil gasta mas combustible de lo debido?'),
 	pregunta('su motor se escucha muy ruidoso? '),
 	pregunta('tiene problemas para arrancar el veiculo en frio?'),
 	pregunta('siente que su motor tiene menos fuerza que antes? ').
 
-sobrecalentamiento:- cambio_ventilador,
+suspension:- alineacion_direccion,
 	pregunta('tienes problemas de la suspencion?'),
 	pregunta('tiene su volante neutral y el auto gira?'),
 	pregunta('ha notado que alguna llanta se desgasta mas? '),
 	pregunta('su volante se mueve bastante y tiembla?').
 
-pantalla_azul:- actualizar_drivers,
+electronico:- bateria_agotada,
 	pregunta('tienes problemas electricos?'),
 	pregunta('sus faros titilan o encienden con poca fuerza?'),
 	pregunta('el estereo no enciende?'),
@@ -98,28 +98,28 @@ pantalla_azul:- actualizar_drivers,
 	pregunta('el auto no enciende de ninguna manera?'),
 	pregunta('su bateria es muy vieja?').
 
-sucio:- limpieza,
+frenos:- cambio_frenos,
 	pregunta('tienes problemas con tus frenos?'),
 	pregunta('cuando frenas escuchas un chillido agudo?'),
 	pregunta('al frenar siente que tarda mas? ').
 
-congelado:- administrador_tareas,
+computadora:- check_egine,
 	pregunta('la luz check egine se encendio en tu tablero?'),
 	pregunta('la luz se mantiene encendida todo el tiempo?').
 
-virus:- antivirus,
+sonido:- cambio_bocina,
 	pregunta('tienes problemas con alguna bocina?'),
 	pregunta('la bocina no se escucha nada?'),
 	pregunta('tu auto tiene suficiente bateria?').
 
 %identificador de falla que dirige a las preguntas correspondientes
 
-formateo:-pregunta('está lenta tu PC?'),!.
-cambio_ventilador:-pregunta('Se calienta mucho?'),!.
-actualizar_drivers:-pregunta('Te aparece pantalla azul?'),!.
-limpieza:-pregunta('hace ruidos al iniciar'),!.
-administrador_tareas:-pregunta('Aparece una pantalla negra?'),!.
-antivirus:-pregunta('Te aparecen muchos accesos directos?'),!.
+cambio_aceite:-pregunta('tienes problemas de motor?'),!.
+alineacion_direccion:-pregunta('tienes problemas de la suspencion?'),!.
+bateria_agotada:-pregunta('tienes problemas electricos?'),!.
+cambio_frenos:-pregunta('tienes problemas con tus frenos?'),!.
+cambio_bocina:-pregunta('tienes problemas con alguna bocina?'),!.
+check_egine:-pregunta('la luz check egine se encendio en tu tablero?'),!.
 
 % proceso del diagnostico basado en preguntas de si y no, cuando el
 % usuario dice si, se pasa a la siguiente pregunta del mismo ramo, si
@@ -161,7 +161,7 @@ botones :- lim,
 	fallas(Falla),
 	send(@texto,selection('la solucion es ')),
 	send(@respl,selection(Falla)),
-	new(@boton,button('inicia procedimiento',message(@prolog,botones))),
+	new(@boton,button('inicia procedimiento mecanico',message(@prolog,botones))),
         send(Menu,display,@boton,point(40,50)),
         send(Menu,display,@btncarrera,point(20,50)),
 limpiar.
