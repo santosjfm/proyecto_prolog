@@ -2,10 +2,22 @@
 
 :-use_module(library(pce)).
 :-use_module(library(pce_style_item)).
+:-pce_image_directory('./img').
+:-dynamic color/2.
 
 % metodo principal para iniciar la interfaz grafica, declaracion de
 % botones, labels, y la posicion en pantalla.
+% Imagenes
+
+resource(pc, image, image('pc_01.jpg')).
+nueva_imagen(Ventana, Imagen):- new(Figura, figure),
+			       new(Bitmap, bitmap(resource(Imagen),@on)),
+			        send(Bitmap, name, 1),
+                                send(Figura, display, Bitmap),
+                                send(Figura, status, 1),
+                                send(Ventana, display,Figura,point(100,150)).
 inicio:-
+
 	new(Menu, dialog('Sistema Experto de fallas en PC', size(900,800))),
 	new(L,label(nombre,'Software para predecir fallas técnicas en computadoras')),
 	new(A,label(nombre,'Santos Fierro 15540172\nJonahtan Ramirez 15551422\nIlse Baca 15551446\nJhonatan Villegas 15551409')),
@@ -15,6 +27,7 @@ inicio:-
 	new(@boton,button('Realizar test',message(@prolog,botones))),
 
 
+        nueva_imagen(Menu, pc),
 	send(Menu,append(L)),new(@btncarrera,button('Diagnostico?')),
 	send(Menu,display,L,point(30,20)),
 	send(Menu,display,A,point(100,260)),
@@ -40,8 +53,9 @@ fallas('realizar un cambio de ventilador:
 
 fallas('La solucion es hacer una limpieza a tu PC:
 	tienes que empezar por desatornillar la tapa lateral del
-	aparato para acceder a su interior. Si te ves capaz, lo mejor es         que extraigas todos los disipadores, ventiladores y tarjeta
-	gráfica para limpiar el polvo que se queda ahÃ­ incrustado
+	aparato para acceder a su interior. Si te ves capaz, lo mejor es
+	que extraigas todos los disipadores, ventiladores y tarjeta
+	gráfica para limpiar el polvo que se queda ahí incrustado
 	de forma concienzuda;si no sabes cómo o no te atreves, utiliza
 	la aspiradora y la brocha para ir poco a poco, limpiando muy
 	bien las aspas de los ventiladores, los filtros antipolvo y las
@@ -204,3 +218,31 @@ botones :- lim,
         send(Menu,display,@btncarrera,point(20,50)),
 limpiar.
 lim :- send(@respl, selection('')).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
