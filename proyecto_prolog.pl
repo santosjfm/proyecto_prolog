@@ -72,6 +72,19 @@ fallas('si tus archivos desaparecieron es porque tienes un virus
 	descarga un antivirus, instalalo y ejecuta el analisis
 	para poder desaserte del virus'):-virus,!.
 
+fallas('Debes reemplazar el cable de corriente que va de la
+	fuente de alimentación al conector, posiblemente esté
+	dañado'):- cable_corriente,!.
+fallas('Debes reinstalar el programa o checar la compatibilidad
+        con tu sistema operativo para poder iniciarlo.'):-reinstalar,!.
+
+fallas('Debes de reemplazar tu puerto USB para poder volver
+        a usarlo o limpiarlo en su defecto.'):- cambiar_puerto,!.
+
+fallas('Debes cambiar el flex de la pantalla, para ello debes
+         desatornillar correctamente la laptop y remover el flex
+	 de la pantalla para poder reemplazarlo adecuandamente.'):-cambiar_flex,!.
+
 
 fallas('sin resultados! No tenemos el suficiente tiempo para resolver
 	tu problema').
@@ -114,6 +127,24 @@ virus:- antivirus,
 	pregunta('notas un comportamiento extraño en tu pc?'),
 	pregunta('sientes que tu pc tiene un mal rendimiento?'),
 	pregunta('se han instalado apliaciones sin tu permiso?').
+cable_corriente:- no_enciende,
+	pregunta('Se escucha un ruido al conectar a la corriente?'),
+	pregunta('Notas que puedes ver los cables al interior
+	del cable de corriente?'),
+	pregunta('La pantalla sí enciende pero el CPU, no?').
+reinstalar:- no_abre_programa,
+	pregunta('Aparace un mensaje de error al iniciarlo?'),
+	pregunta('Se cierra solo el programa?'),
+	pregunta('Se traba o está muy lento?').
+cambiar_puerto:- falla_usb,
+	pregunta('Le da corriente a la memoria?'),
+	pregunta('cuando la conectas aparece un mensaje de error?'),
+	pregunta('notas que está suelto el puerto?').
+cambiar_flex:- falla_pantalla,
+	pregunta('Parpadea la pantalla cuando la estás usando?'),
+	pregunta('Aparece todo en negro?'),
+	pregunta('Es laptop?').
+
 
 %identificador de falla que dirige a las preguntas correspondientes
 
@@ -123,6 +154,10 @@ actualizar_drivers:-pregunta('Te aparece pantalla azul?'),!.
 limpieza:-pregunta('hace ruidos al iniciar?'),!.
 administrador_tareas:-pregunta('Aparece una pantalla negra?'),!.
 antivirus:-pregunta('Te aparecen muchos accesos directos?'),!.
+no_enciende:-pregunta('Tu PC no enciende?'),!.
+no_abre_programa:-pregunta('No abre un programa?'),!.
+falla_usb:-pregunta('No detecta tu memoria USB?'),!.
+falla_pantalla:-pregunta('Falla tu pantalla?'),!.
 
 % proceso del diagnostico basado en preguntas de si y no, cuando el
 % usuario dice si, se pasa a la siguiente pregunta del mismo ramo, si
@@ -130,7 +165,7 @@ antivirus:-pregunta('Te aparecen muchos accesos directos?'),!.
 % (motor,frenos,etc.)
 
 :-dynamic si/1,no/1.
-preguntar(Problema):- new(Di,dialog('DiagnÃ³stico de PC')),
+preguntar(Problema):- new(Di,dialog('Diagnóstico de PC')),
      new(L2,label(texto,'Responde las siguientes preguntas')),
      new(La,label(prob,Problema)),
      new(B1,button(si,and(message(Di,return,si)))),

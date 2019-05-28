@@ -7,7 +7,7 @@
 % botones, labels, y la posicion en pantalla.
 inicio:-
 	new(Menu, dialog('Sistema Experto de fallas en PC', size(900,800))),
-	new(L,label(nombre,'Software para predecir fallas t√©cnicas en computadoras')),
+	new(L,label(nombre,'Software para predecir fallas tÈcnicas en computadoras')),
 	new(A,label(nombre,'Santos Fierro 15540172\nJonahtan Ramirez 15551422\nIlse Baca 15551446\nJhonatan Villegas 15551409')),
 	new(@texto,label(nombre,'Responde este cuestionario para resolver tu falla')),
 	new(@respl,label(nombre,'')),
@@ -28,8 +28,8 @@ inicio:-
 
 fallas('Se recomienda un formateo:
       Debe de reinstalar por completo el sistema operativo,
-      as√≠ se eliminar√°n los archivos que se acumulan con el
-      tiempo,se desfragmenta el disco duro y funcionar√°
+      as√≠ se eliminar·n los archivos que se acumulan con el
+      tiempo,se desfragmenta el disco duro y funcionar·°
       de una mejor manera'):-lento,!.
 
 fallas('realizar un cambio de ventilador:
@@ -40,13 +40,13 @@ fallas('realizar un cambio de ventilador:
 
 fallas('La solucion es hacer una limpieza a tu PC:
 	tienes que empezar por desatornillar la tapa lateral del
-	aparato para acceder a su interior. Si te ves capaz, lo mejor es que
-	extraigas todos los disipadores, ventiladores y tarjeta gr√°fica para
-	limpiar el polvo que se queda ah√≠ incrustado de forma concienzuda;
-	si no sabes c√≥mo o no te atreves, utiliza la aspiradora y la brocha para
-	ir poco a poco, limpiando muy bien las aspas de los ventiladores, los filtros
-	antipolvo y las ranuras que te vayas encontrando. Cuando acabes, vuelve
-	a poner la tapa en su lugar.'):-sucio,!.
+	aparato para acceder a su interior. Si te ves capaz, lo mejor es         que extraigas todos los disipadores, ventiladores y tarjeta
+	gr·fica para limpiar el polvo que se queda ah√≠ incrustado
+	de forma concienzuda;si no sabes cÛmo o no te atreves, utiliza
+	la aspiradora y la brocha para ir poco a poco, limpiando muy
+	bien las aspas de los ventiladores, los filtros antipolvo y las
+	ranuras que te vayas encontrando. Cuando acabes, vuelve a
+	poner la tapa en su lugar.'):-sucio,!.
 
 fallas('llego la hora de cambiar tus pastillas de freno:
 	si se escucha un chillido agudo al frenar es tiempo
@@ -88,17 +88,16 @@ lento:- formateo,
 
 sobrecalentamiento:- cambio_ventilador,
 	pregunta('Hace mucho ruido el ventilador de tu PC?'),
-	pregunta('Se calienta muy r√°pido?'),
+	pregunta('Se calienta muy r·pido?'),
 	pregunta('Se apaga cuando se calienta mucho?'),
 	pregunta('tiene problemas de rendimiento en general?').
 
 pantalla_azul:- actualizar_drivers,
-	pregunta('tienes problemas electricos?'),
-	pregunta('sus faros titilan o encienden con poca fuerza?'),
-	pregunta('el estereo no enciende?'),
-	pregunta('el auto emite un crack cuando lo enciende?'),
-	pregunta('el auto no enciende de ninguna manera?'),
-	pregunta('su bateria es muy vieja?').
+	pregunta('ha aparecido con frecuencia la pantalla azul?'),
+	pregunta('Aparece el error 0x0000000A?'),
+	pregunta('no ha actualizado recientemente sus drivers?'),
+	pregunta('no ha formateado en m·s de 1 aÒo su PC?'),
+	pregunta('fallÛ alguna actualizaciÛn?').
 
 sucio:- limpieza,
 	pregunta('tu ventilador llega a atascarse?'),
@@ -107,18 +106,18 @@ sucio:- limpieza,
 	pregunta('tu PC se apaga de vez en cuando?').
 
 congelado:- administrador_tareas,
-	pregunta('la luz check egine se encendio en tu tablero?'),
-	pregunta('la luz se mantiene encendida todo el tiempo?').
+	pregunta('no responde tu PC?'),
+	pregunta('No puedes cerrar un programa?').
 
 virus:- antivirus,
 	pregunta('Tus archivos desaparecion?'),
-	pregunta('notas un comportamiento extra√±o en tu pc?'),
+	pregunta('notas un comportamiento extraÒo en tu pc?'),
 	pregunta('sientes que tu pc tiene un mal rendimiento?'),
 	pregunta('se han instalado apliaciones sin tu permiso?').
 
 %identificador de falla que dirige a las preguntas correspondientes
 
-formateo:-pregunta('est√° lenta tu PC?'),!.
+formateo:-pregunta('est· lenta tu PC?'),!.
 cambio_ventilador:-pregunta('Se calienta mucho?'),!.
 actualizar_drivers:-pregunta('Te aparece pantalla azul?'),!.
 limpieza:-pregunta('hace ruidos al iniciar?'),!.
