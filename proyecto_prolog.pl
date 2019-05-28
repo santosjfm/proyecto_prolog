@@ -7,7 +7,7 @@
 % botones, labels, y la posicion en pantalla.
 inicio:-
 	new(Menu, dialog('Sistema Experto de fallas en PC', size(900,800))),
-	new(L,label(nombre,'Software para predecir fallas tÈcnicas en computadoras')),
+	new(L,label(nombre,'Software para predecir fallas t√©cnicas en computadoras')),
 	new(A,label(nombre,'Santos Fierro 15540172\nJonahtan Ramirez 15551422\nIlse Baca 15551446\nJhonatan Villegas 15551409')),
 	new(@texto,label(nombre,'Responde este cuestionario para resolver tu falla')),
 	new(@respl,label(nombre,'')),
@@ -28,22 +28,25 @@ inicio:-
 
 fallas('Se recomienda un formateo:
       Debe de reinstalar por completo el sistema operativo,
-      asÌ se eliminar·n los archivos que se acumulan con el
-      tiempo,se desfragmenta el disco duro y funcionar·
+      as√≠ se eliminar√°n los archivos que se acumulan con el
+      tiempo,se desfragmenta el disco duro y funcionar√°
       de una mejor manera'):-lento,!.
 
 fallas('realizar un cambio de ventilador:
         los ventiladores de las PC duran un tiempo y se
 	descomponen, se recomienda cambiar el ventilador
-	y la pasta tÈrmica del procesador para un mejor
+	y la pasta t√©rmica del procesador para un mejor
 	rendmiento y cero calentamiento'):-sobrecalentamiento,!.
 
-fallas('verificar el estado actual de la bateria:
-	primero abra el cofre y ubique la bateria del coche
-        verifique si estan bien conctados los cables, arranque
-	el coche, si no arranca entonces la bateria esta muerta
-	para esto recarguela pase corriente con otro coche,
-	en caso de no tener exito debera reemplazar la bateria'):-electronico,!.
+fallas('La solucion es hacer una limpieza a tu PC:
+	tienes que empezar por desatornillar la tapa lateral del 
+	aparato para acceder a su interior. Si te ves capaz, lo mejor es que 
+	extraigas todos los disipadores, ventiladores y tarjeta gr√°fica para 
+	limpiar el polvo que se queda ah√≠ incrustado de forma concienzuda; 
+	si no sabes c√≥mo o no te atreves, utiliza la aspiradora y la brocha para
+	ir poco a poco, limpiando muy bien las aspas de los ventiladores, los filtros
+	antipolvo y las ranuras que te vayas encontrando. Cuando acabes, vuelve 
+	a poner la tapa en su lugar.'):-limpieza
 
 fallas('llego la hora de cambiar tus pastillas de freno:
 	si se escucha un chillido agudo al frenar es tiempo
@@ -84,7 +87,7 @@ lento:- formateo,
 
 sobrecalentamiento:- cambio_ventilador,
 	pregunta('Hace mucho ruido el ventilador de tu PC?'),
-	pregunta('Se calienta muy r·pido?'),
+	pregunta('Se calienta muy r√°pido?'),
 	pregunta('Se apaga cuando se calienta mucho?'),
 	pregunta('tiene problemas de rendimiento en general?').
 
@@ -97,9 +100,9 @@ pantalla_azul:- actualizar_drivers,
 	pregunta('su bateria es muy vieja?').
 
 sucio:- limpieza,
-	pregunta('tienes problemas con tus frenos?'),
-	pregunta('cuando frenas escuchas un chillido agudo?'),
-	pregunta('al frenar siente que tarda mas? ').
+	pregunta('tu ventilador llega a atascarse?'),
+	pregunta('tu pc comienza a elevar su temperatura rapidamente al enenderla
+	pregunta('tu PC se apaga de vez en cuando?').
 
 congelado:- administrador_tareas,
 	pregunta('la luz check egine se encendio en tu tablero?'),
@@ -112,7 +115,7 @@ virus:- antivirus,
 
 %identificador de falla que dirige a las preguntas correspondientes
 
-formateo:-pregunta('est· lenta tu PC?'),!.
+formateo:-pregunta('est√° lenta tu PC?'),!.
 cambio_ventilador:-pregunta('Se calienta mucho?'),!.
 actualizar_drivers:-pregunta('Te aparece pantalla azul?'),!.
 limpieza:-pregunta('hace ruidos al iniciar?'),!.
@@ -125,7 +128,7 @@ antivirus:-pregunta('Te aparecen muchos accesos directos?'),!.
 % (motor,frenos,etc.)
 
 :-dynamic si/1,no/1.
-preguntar(Problema):- new(Di,dialog('DiagnÛstico de PC')),
+preguntar(Problema):- new(Di,dialog('Diagn√≥stico de PC')),
      new(L2,label(texto,'Responde las siguientes preguntas')),
      new(La,label(prob,Problema)),
      new(B1,button(si,and(message(Di,return,si)))),
