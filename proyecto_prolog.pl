@@ -39,13 +39,13 @@ fallas('realizar un cambio de ventilador:
 	rendmiento y cero calentamiento'):-sobrecalentamiento,!.
 
 fallas('La solucion es hacer una limpieza a tu PC:
-	tienes que empezar por desatornillar la tapa lateral del 
-	aparato para acceder a su interior. Si te ves capaz, lo mejor es que 
-	extraigas todos los disipadores, ventiladores y tarjeta gráfica para 
-	limpiar el polvo que se queda ahí incrustado de forma concienzuda; 
+	tienes que empezar por desatornillar la tapa lateral del
+	aparato para acceder a su interior. Si te ves capaz, lo mejor es que
+	extraigas todos los disipadores, ventiladores y tarjeta gráfica para
+	limpiar el polvo que se queda ahí incrustado de forma concienzuda;
 	si no sabes cómo o no te atreves, utiliza la aspiradora y la brocha para
 	ir poco a poco, limpiando muy bien las aspas de los ventiladores, los filtros
-	antipolvo y las ranuras que te vayas encontrando. Cuando acabes, vuelve 
+	antipolvo y las ranuras que te vayas encontrando. Cuando acabes, vuelve
 	a poner la tapa en su lugar.'):-sucio,!.
 
 fallas('llego la hora de cambiar tus pastillas de freno:
@@ -55,26 +55,26 @@ fallas('llego la hora de cambiar tus pastillas de freno:
 	donde se va a cambiar, con una llave inglesa y una
 	matraca aflojar los cubre pastillas y sacar las patillas
 	antiguas y reponerlas con las nuevas, colocar todo en su
-	lugar y bla bla bla. '):-frenos,!.
+	lugar y bla bla bla. '):-pantalla_azul,!.
 
 fallas('posiblemente tu auto pasara a mejor vida:
 	esta luz puede indicar varias fallas en el sistema de la ECU,
 	las pricipales son fallas de sensores, servicio de motor,
 	catalizador, etc. si se cuenta con un escaner automotriz puede
 	borrarse la falla pero esto no arregla el problema, para ello
-	acuda con su mecanico certificado por los aliens.'):-computadora,!.
+	acuda con su mecanico certificado por los aliens.'):-congelado,!.
 
 fallas('si tus archivos desaparecieron es porque tienes un virus
 	ejecuta este comando en CMD para recuperar tus arhivos:
-	attrib /d /s -r -h -s C:\*.*
-	una vez que ya tengas de nuevo todo tus archivos, 
+	attrib /d /s -r -h -s C:/*.*
+	una vez que ya tengas de nuevo todo tus archivos,
 	formatea o elimina archivos lo mas que puedas, luego
-	descarga un antivirus, instalalo y ejecuta el analisis 
+	descarga un antivirus, instalalo y ejecuta el analisis
 	para poder desaserte del virus'):-virus,!.
 
 
-fallas('sin resultados! si los problemas persisten utilice un dispositivo
-	alienigena con mas ram y 12 nucleos cpu:/').
+fallas('sin resultados! No tenemos el suficiente tiempo para resolver
+	tu problema').
 
 % preguntas para resolver las fallas con su respectivo identificador de
 % falla
@@ -82,7 +82,8 @@ lento:- formateo,
 	pregunta('Tarda mucho en cargar los programas?'),
 	pregunta('Cuando abre un programa, se queda congelado?'),
 	pregunta('Tarda mucho tiempo en encender? '),
-	pregunta('No puede tener abiertos varios programas por que se congela la pantalla?'),
+	pregunta('No puede tener abiertos varios programas porque
+	se congela la pantalla?'),
 	pregunta('Se siente lenta en general? ').
 
 sobrecalentamiento:- cambio_ventilador,
@@ -101,7 +102,8 @@ pantalla_azul:- actualizar_drivers,
 
 sucio:- limpieza,
 	pregunta('tu ventilador llega a atascarse?'),
-	pregunta('tu pc comienza a elevar su temperatura rapidamente al enenderla
+	pregunta('tu pc comienza a elevar su temperatura rapidamente al encenderla
+	?'),
 	pregunta('tu PC se apaga de vez en cuando?').
 
 congelado:- administrador_tareas,
