@@ -28,15 +28,13 @@ inicio:-
 
 fallas('Se recomienda un formateo:
       Debe de reinstalar por completo el sistema operativo,
-      así se eliminarán los archivos que se acumulan con el
-      tiempo,se desfragmenta el disco duro y funcionará
+      así se eliminarán los archivos que se acumulan con el tiempo,
+      se desfragmenta el disco duro y funcionará
       de una mejor manera'):-lento,!.
 
-fallas('realizar un cambio de ventilador:
-        los ventiladores de las PC duran un tiempo y se
-	descomponen, se recomienda cambiar el ventilador
-	y la pasta térmica del procesador para un mejor
-	rendmiento y cero calentamiento'):-sobrecalentamiento,!.
+fallas('realizar una alineacion y balanceo:
+        la solucion para esto es llavar el auto a un taller
+        para que alinien y balancen las llantas del auto'):-suspension,!.
 
 fallas('verificar el estado actual de la bateria:
 	primero abra el cofre y ubique la bateria del coche
@@ -83,10 +81,10 @@ lento:- formateo,
 	pregunta('Se siente lenta en general? ').
 
 sobrecalentamiento:- cambio_ventilador,
-	pregunta('Hace mucho ruido el ventilador de tu PC?'),
-	pregunta('Se calienta muy rápido?'),
-	pregunta('Se apaga cuando se calienta mucho?'),
-	pregunta('tiene problemas de rendimiento en general?').
+	pregunta('tienes problemas de la suspencion?'),
+	pregunta('tiene su volante neutral y el auto gira?'),
+	pregunta('ha notado que alguna llanta se desgasta mas? '),
+	pregunta('su volante se mueve bastante y tiembla?').
 
 pantalla_azul:- actualizar_drivers,
 	pregunta('tienes problemas electricos?'),
