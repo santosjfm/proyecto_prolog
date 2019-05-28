@@ -46,7 +46,7 @@ fallas('La solucion es hacer una limpieza a tu PC:
 	si no sabes cómo o no te atreves, utiliza la aspiradora y la brocha para
 	ir poco a poco, limpiando muy bien las aspas de los ventiladores, los filtros
 	antipolvo y las ranuras que te vayas encontrando. Cuando acabes, vuelve 
-	a poner la tapa en su lugar.'):-limpieza
+	a poner la tapa en su lugar.'):-limpieza,!.
 
 fallas('llego la hora de cambiar tus pastillas de freno:
 	si se escucha un chillido agudo al frenar es tiempo
