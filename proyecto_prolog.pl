@@ -26,9 +26,11 @@ inicio:-
 
 %solucion a las fallas de acuerdo a las reglas de diagnostico
 
-fallas('Se recomienda un formateo: Debe de reinstalar por completo el sistema operativo,
-	así se eliminarán los archivos que se acumulan con el tiempo, se desfragmenta el disco
-	duro y funcionará de una mejor manera'):-lento,!.
+fallas('Se recomienda un formateo:
+      Debe de reinstalar por completo el sistema operativo,
+      así se eliminarán los archivos que se acumulan con el tiempo,
+      se desfragmenta el disco duro y funcionará
+      de una mejor manera'):-lento,!.
 
 fallas('realizar una alineacion y balanceo:
         la solucion para esto es llavar el auto a un taller
