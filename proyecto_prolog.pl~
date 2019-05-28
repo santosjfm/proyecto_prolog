@@ -62,7 +62,7 @@ fallas('posiblemente tu auto pasara a mejor vida:
 	las pricipales son fallas de sensores, servicio de motor,
 	catalizador, etc. si se cuenta con un escaner automotriz puede
 	borrarse la falla pero esto no arregla el problema, para ello
-	acuda con su mecanico certificado por los aliens.'):-computadora,!.
+	acuda con su mecanico certificado por los aliens.'):-congelado,!.
 
 fallas('si tus archivos desaparecieron es porque tienes un virus
 	ejecuta este comando en CMD para recuperar tus arhivos:
@@ -82,7 +82,8 @@ lento:- formateo,
 	pregunta('Tarda mucho en cargar los programas?'),
 	pregunta('Cuando abre un programa, se queda congelado?'),
 	pregunta('Tarda mucho tiempo en encender? '),
-	pregunta('No puede tener abiertos varios programas por que se congela la pantalla?'),
+	pregunta('No puede tener abiertos varios programas porque
+	se congela la pantalla?'),
 	pregunta('Se siente lenta en general? ').
 
 sobrecalentamiento:- cambio_ventilador,
