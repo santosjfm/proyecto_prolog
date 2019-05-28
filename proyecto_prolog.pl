@@ -26,15 +26,9 @@ inicio:-
 
 %solucion a las fallas de acuerdo a las reglas de diagnostico
 
-fallas('hacer un cambio de aceite:
-	primero abra el cofre y ubique la figura del carter,
-	el motor debe estar tibio antes de proceder, despues
-	ubicar la valvula de purgacion debajo del motor y
-	colocar una cubeta debajo, abrir la valvula y drenar
-	el aceite antiguo, vea su manual de usuario para saber
-	cuantos litros de aceite necesita su coche despues de
-	drenar el aceite cierre la valvula y abra el carter
-	para rellenar con el nuevo aceite y tapar el carter'):-aceite,!.
+fallas('Se recomienda un formateo: Debe de reinstalar por completo el sistema operativo,
+	así se eliminarán los archivos que se acumulan con el tiempo, se desfragmenta el disco
+	duro y funcionará de una mejor manera'):-lento,!.
 
 fallas('realizar una alineacion y balanceo:
         la solucion para esto es llavar el auto a un taller
@@ -78,11 +72,11 @@ fallas('sin resultados! si los problemas persisten utilice un dispositivo
 % preguntas para resolver las fallas con su respectivo identificador de
 % falla
 lento:- formateo,
-	pregunta('tienes problemas de motor?'),
-	pregunta('su automovil gasta mas combustible de lo debido?'),
-	pregunta('su motor se escucha muy ruidoso? '),
-	pregunta('tiene problemas para arrancar el veiculo en frio?'),
-	pregunta('siente que su motor tiene menos fuerza que antes? ').
+	pregunta('Tarda mucho en cargar los programas?'),
+	pregunta('Cuando abre un programa, se queda congelado?'),
+	pregunta('Tarda mucho tiempo en encender? '),
+	pregunta('No puede tener abiertos varios programas por que se congela la pantalla?'),
+	pregunta('Se siente lenta en general? ').
 
 sobrecalentamiento:- cambio_ventilador,
 	pregunta('tienes problemas de la suspencion?'),
@@ -117,7 +111,7 @@ virus:- antivirus,
 formateo:-pregunta('está lenta tu PC?'),!.
 cambio_ventilador:-pregunta('Se calienta mucho?'),!.
 actualizar_drivers:-pregunta('Te aparece pantalla azul?'),!.
-limpieza:-pregunta('hace ruidos al iniciar'),!.
+limpieza:-pregunta('hace ruidos al iniciar?'),!.
 administrador_tareas:-pregunta('Aparece una pantalla negra?'),!.
 antivirus:-pregunta('Te aparecen muchos accesos directos?'),!.
 
