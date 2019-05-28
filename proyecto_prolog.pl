@@ -46,7 +46,7 @@ fallas('La solucion es hacer una limpieza a tu PC:
 	si no sabes cómo o no te atreves, utiliza la aspiradora y la brocha para
 	ir poco a poco, limpiando muy bien las aspas de los ventiladores, los filtros
 	antipolvo y las ranuras que te vayas encontrando. Cuando acabes, vuelve 
-	a poner la tapa en su lugar.'):-limpieza,!.
+	a poner la tapa en su lugar.'):-sucio,!.
 
 fallas('llego la hora de cambiar tus pastillas de freno:
 	si se escucha un chillido agudo al frenar es tiempo
@@ -64,13 +64,13 @@ fallas('posiblemente tu auto pasara a mejor vida:
 	borrarse la falla pero esto no arregla el problema, para ello
 	acuda con su mecanico certificado por los aliens.'):-computadora,!.
 
-fallas('seguro subes demaciado el volumen:
-	primero debes ubicar la bocina que no se escucha despues
-        quitar o desatornillar el caparcete que protege la bocina
-	y verificar que la bocina este bien conectado o tenga un cable
-	quemado, dado uno de los casos deberas cambiar el cable
-	o remplazar la bocina. Otro caso es verificar el estereo
-	del auto si estan bien conectados los cables'):-sonido,!.
+fallas('si tus archivos desaparecieron es porque tienes un virus
+	ejecuta este comando en CMD para recuperar tus arhivos:
+	attrib /d /s -r -h -s C:\*.*
+	una vez que ya tengas de nuevo todo tus archivos, 
+	formatea o elimina archivos lo mas que puedas, luego
+	descarga un antivirus, instalalo y ejecuta el analisis 
+	para poder desaserte del virus'):-virus,!.
 
 
 fallas('sin resultados! si los problemas persisten utilice un dispositivo
@@ -109,9 +109,10 @@ congelado:- administrador_tareas,
 	pregunta('la luz se mantiene encendida todo el tiempo?').
 
 virus:- antivirus,
-	pregunta('tienes problemas con alguna bocina?'),
-	pregunta('la bocina no se escucha nada?'),
-	pregunta('tu auto tiene suficiente bateria?').
+	pregunta('Tus archivos desaparecion?'),
+	pregunta('notas un comportamiento extraño en tu pc?'),
+	pregunta('sientes que tu pc tiene un mal rendimiento?'),
+	pregunta('se han instalado apliaciones sin tu permiso?').
 
 %identificador de falla que dirige a las preguntas correspondientes
 
