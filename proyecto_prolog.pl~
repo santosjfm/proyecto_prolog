@@ -5,50 +5,55 @@
 :-pce_image_directory('./img').
 :-dynamic color/2.
 
-% metodo principal para iniciar la interfaz grafica, declaracion de
-% botones, labels, y la posicion en pantalla.
 % Imagenes
 
 resource(pc, image, image('pc_01.jpg')).
 nueva_imagen(Ventana, Imagen):- new(Figura, figure),
-			       new(Bitmap, bitmap(resource(Imagen),@on)),
+			        new(Bitmap, bitmap(resource(Imagen),@on)),
 			        send(Bitmap, name, 1),
                                 send(Figura, display, Bitmap),
                                 send(Figura, status, 1),
-                                send(Ventana, display,Figura,point(400,200)).
+                                send(Ventana, display,Figura,point(450,350)).
+
+
+% metodo principal para iniciar la interfaz grafica, declaracion de
+% botones, labels, y la posicion en pantalla.
+
 inicio:-
 
-	new(Menu, dialog('Sistema Experto de fallas en PC', size(900,800))),
+	new(Menu, dialog('Sistema Experto de fallas en PC', size(950,850))),
 	new(L,label(nombre,'Software para predecir fallas técnicas en computadoras')),
 	new(A,label(nombre,'Santos Fierro 15540172\nJonahtan Ramirez 15551422\nIlse Baca 15551446\nJhonatan Villegas 15551409')),
 	new(@texto,label(nombre,'Responde este cuestionario para resolver tu falla')),
 	new(@respl,label(nombre,'')),
 	new(Salir,button('SALIR',and(message(Menu, destroy),message(Menu,free)))),
 	new(@boton,button('Realizar test',message(@prolog,botones))),
+	new(@texto2, label(nombre,'')),
 
 
         nueva_imagen(Menu, pc),
 	send(Menu,append(L)),new(@btncarrera,button('Diagnostico?')),
-	send(Menu,display,L,point(30,20)),
-	send(Menu,display,A,point(100,260)),
-	send(Menu,display,@boton,point(150,150)),
-	send(Menu,display,@texto,point(43,60)),
-	send(Menu,display,Salir,point(150,360)),
-	send(Menu,display,@respl,point(20,130)),
+	send(Menu,display,L,point(30,10)),
+	send(Menu,display,A,point(100,360)),
+	send(Menu,display,@boton,point(150,170)),
+	send(Menu,display,@texto,point(43,25)),
+	send(Menu,display,Salir,point(150,460)),
+	send(Menu,display,@respl,point(20,200)),
+	send(Menu,display,@texto2,point(43, 185)),
 	send(Menu,open_centered).
 
 %solucion a las fallas de acuerdo a las reglas de diagnostico
 
 fallas('Se recomienda un formateo:
       Debe de reinstalar por completo el sistema operativo,
-      asÃ­ se eliminarán los archivos que se acumulan con el
+      así se eliminarán los archivos que se acumulan con el
       tiempo,se desfragmenta el disco duro y funcionará¡
       de una mejor manera'):-lento,!.
 
 fallas('realizar un cambio de ventilador:
         los ventiladores de las PC duran un tiempo y se
 	descomponen, se recomienda cambiar el ventilador
-	y la pasta tÃ©rmica del procesador para un mejor
+	y la pasta térmica del procesador para un mejor
 	rendmiento y cero calentamiento'):-sobrecalentamiento,!.
 
 fallas('La solucion es hacer una limpieza a tu PC:
@@ -62,21 +67,15 @@ fallas('La solucion es hacer una limpieza a tu PC:
 	ranuras que te vayas encontrando. Cuando acabes, vuelve a
 	poner la tapa en su lugar.'):-sucio,!.
 
-fallas('llego la hora de cambiar tus pastillas de freno:
-	si se escucha un chillido agudo al frenar es tiempo
-        de cambiar las pastillas de los frenos, para ello hay
-	que levantar con un gato hidraulico el lado del freno
-	donde se va a cambiar, con una llave inglesa y una
-	matraca aflojar los cubre pastillas y sacar las patillas
-	antiguas y reponerlas con las nuevas, colocar todo en su
-	lugar y bla bla bla. '):-pantalla_azul,!.
+fallas('Tu PC pasará a mejor vida, recomendamos hacerle un funeral.
+	mentira, debes instalar todas las actulizacione disponibles
+	de tus drives o del mismo sistema operativo, cuando pasa esto
+	significa que algun driver está fallando o un archivo del mismo
+	'):-pantalla_azul,!.
 
-fallas('posiblemente tu auto pasara a mejor vida:
-	esta luz puede indicar varias fallas en el sistema de la ECU,
-	las pricipales son fallas de sensores, servicio de motor,
-	catalizador, etc. si se cuenta con un escaner automotriz puede
-	borrarse la falla pero esto no arregla el problema, para ello
-	acuda con su mecanico certificado por los aliens.'):-congelado,!.
+fallas('Puede que sea el momento adecuando para cambiar de PC, ya que
+        no tiene la suficiente memoria o procesador para correr tus
+	programas habituales.'):-congelado,!.
 
 fallas('si tus archivos desaparecieron es porque tienes un virus
 	ejecuta este comando en CMD para recuperar tus arhivos:
@@ -89,6 +88,7 @@ fallas('si tus archivos desaparecieron es porque tienes un virus
 fallas('Debes reemplazar el cable de corriente que va de la
 	fuente de alimentación al conector, posiblemente esté
 	dañado'):- cable_corriente,!.
+
 fallas('Debes reinstalar el programa o checar la compatibilidad
         con tu sistema operativo para poder iniciarlo.'):-reinstalar,!.
 
@@ -211,13 +211,14 @@ botones :- lim,
 	send(@boton,free),
 	send(@btncarrera,free),
 	fallas(Falla),
-	send(@texto,selection('la solucion es ')),
+	send(@texto2,selection('LA SOLUCION ES:')),
 	send(@respl,selection(Falla)),
 	new(@boton,button('inicia procedimiento',message(@prolog,botones))),
         send(Menu,display,@boton,point(40,50)),
         send(Menu,display,@btncarrera,point(20,50)),
 limpiar.
 lim :- send(@respl, selection('')).
+fin:-halt.
 
 
 
